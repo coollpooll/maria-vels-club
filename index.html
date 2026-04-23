@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>MARIA VELS | CLUB</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap');
+body {
+font-family: 'Inter', system_ui, sans-serif;
+background: #111111e9;
+color: #e5e5e5;
+margin: 0;
+padding: 0;
+}
+.heading-font {
+font-family: 'Playfair Display', serif;
+}
+.pink-gradient {
+background: linear-gradient(90deg, #ff8ec4, #ff4d94);
+}
+.video-bg {
+position: fixed;
+top: 0; left: 0;
+width: 100%; height: 100%;
+object-fit: cover;
+z-index: -2;
+filter: grayscale(85%) brightness(0.62) contrast(1.18);
+}
+.gold-glow {
+position: fixed;
+inset: 0;
+background: radial-gradient(circle at 50% 35%, rgba(212, 175, 55, 0.22) 0%, transparent 65%);
+z-index: -1;
+mix-blend-mode: screen;
+}
+.pink-overlay {
+position: fixed;
+inset: 0;
+background: radial-gradient(circle at center, rgba(255, 77, 148, 0.08) 0%, transparent 70%);
+z-index: -1;
+}
+.glow-btn {
+position: relative;
+overflow: hidden;
+transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+box-shadow: 0 10px 30px -10px rgb(255 77 148);
+}
+.glow-btn:hover {
+transform: translateY(-4px) scale(1.04);
+box-shadow: 0 25px 50px -12px rgb(255 77 148),
+0 0 45px 18px rgba(212, 175, 55, 0.5),
+0 0 25px 8px rgba(255, 77, 148, 0.4);
+}
+.sticky-header {
+position: sticky;
+top: 0;
+z-index: 50;
+background: transparent;
+backdrop-filter: blur(8px);
+border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+/* ====================== МОБИЛЬНАЯ ВЕРСИЯ ====================== */
+@media (max-width: 640px) {
+.sticky-header {
+padding-top: 0.75rem;
+padding-bottom: 0.75rem;
+  }
+.heading-font {
+font-size: 1.85rem !important;
+  }
+h1 {
+font-size: 2.75rem !important;
+line-height: 1.05 !important;
+  }
+.text-2xl {
+font-size: 1.6rem !important;
+  }
+.text-xl {
+font-size: 1.3rem !important;
+  }
+.px-6 {
+padding-left: 1rem !important;
+padding-right: 1rem !important;
+  }
+button {
+padding-top: 1.1rem !important;
+padding-bottom: 1.1rem !important;
+font-size: 1.15rem !important;
+  }
+footer {
+background: #161616 !important;
+padding-top: 3.5rem !important;
+padding-bottom: 3.5rem !important;
+  }
+footer .flex {
+gap: 1.5rem !important;
+font-size: 0.98rem !important;
+  }
+}
+/* ====================== ДЕСКТОП ====================== */
+@media (min-width: 641px) {
+.sticky-header {
+padding-top: 1.25rem;
+padding-bottom: 1.25rem;
+  }
+}
+</style>
+</head>
+<body>
+<!-- STICKY HEADER -->
+<header class="sticky-header">
+<div class="max-w-6xl mx-auto px-6 py-5 flex-cols min-[674px]:flex items-center min-[320px]:justify-center min-[674px]:justify-between">
+<div class="min-[674px]:flex items-center gap-3 text-center mb-4 min-[674px]:mb-0">
+<span class="text-2xl font-bold tracking-widest heading-font">MARIA VELS</span>
+<span class="text-sm uppercase tracking-[2px] text-pink-400">| CLUB</span>
+</div>
+<nav class="hidden lg:flex items-center lg:gap-6 xl:gap-8 text-sm font-medium">
+<a href="#program" class="hover:text-white transition">О программе</a>
+<a href="#for-whom" class="hover:text-white transition">Для кого</a>
+<a href="#results" class="hover:text-white transition">Результаты</a>
+<a href="#faq" class="hover:text-white transition">FAQ</a>
+</nav>
+<div class="flex items-center justify-center gap-4 text-center">
+<button onclick="showBookingModal()" class="glow-btn px-6 py-3 text-sm font-semibold bg-gradient-to-r from-pink-400 to-purple-500 text-white rounded-3xl">Забронировать место</button>
+<button onclick="showApplicationModal()" class="px-6 py-3 text-sm font-medium border border-white/50 hover:border-white rounded-3xl transition">Оставить заявку</button>
+</div>
+</div>
+</header>
+<!-- Фоновое видео -->
+<video class="video-bg" autoplay loop muted playsinline poster="maria.jpg">
+<source src="background-video.mp4" type="video/mp4">
+</video>
+<div class="gold-glow"></div>
+<div class="pink-overlay"></div>
+<!-- HERO -->
+<section class="min-h-screen flex items-center pt-20 relative">
+<div class="max-w-4xl mx-auto px-6 text-center">
+<div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-5 py-2 rounded-3xl mb-8 text-sm font-medium mx-auto">
+<span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+            Ближайший поток — 11 мая • Осталось 4 места из 10
+</div>
+<h1 class="text-5xl md:text-6xl heading-font leading-none mb-6 text-white">
+            Индивидуальное обучение<br>для девушек в Москве
+</h1>
+<p class="text-2xl md:text-3xl font-medium leading-tight mb-10 bg-gradient-to-r from-pink-300 via-pink-400 to-purple-400 bg-clip-text text-transparent">
+            Харизма, сценическая подача, самопрезентация<br>
+            и подготовка к кастингам в премиальные иммерсивные проекты
+</p>
+<div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 md:p-10 mb-10 mx-auto max-w-2xl">
+<div class="grid grid-cols-3 gap-8 md:gap-12 text-center">
+<div class="flex flex-col items-center">
+<i class="fas fa-calendar-days text-2xl md:text-3xl text-pink-400 mb-3"></i>
+<div class="text-xl md:text-3xl font-semibold text-white heading-font leading-none">7 дней</div>
+<div class="text-[9px] md:text-[10px] uppercase tracking-[1.5px] text-white/70 mt-3">ПО 2 ЧАСА</div>
+</div>
+<div class="flex flex-col items-center">
+<i class="fas fa-location-dot text-2xl md:text-3xl text-pink-400 mb-3"></i>
+<div class="text-xl md:text-3xl font-semibold text-white heading-font leading-none">офлайн</div>
+<div class="text-[9px] md:text-[10px] uppercase tracking-[1.5px] text-white/70 mt-3">ЦЕНТР МОСКВЫ</div>
+</div>
+<div class="flex flex-col items-center">
+<i class="fas fa-ruble-sign text-2xl md:text-3xl text-pink-400 mb-3"></i>
+<div class="text-xl md:text-3xl font-semibold text-white heading-font leading-none">50 000</div>
+<div class="text-[9px] md:text-[10px] uppercase tracking-[1.5px] text-white/70 mt-3">ОПЛАТА ЧАСТЯМИ</div>
+</div>
+</div>
+</div>
+<p class="text-xl mb-12 text-white/90 max-w-2xl mx-auto">
+            После обучения вы получаете гарантированный выход на кастинг<br>
+            с рекомендацией «Ученица Марии Вельс»
+</p>
+<!-- КНОПКИ С ПОЯСНЕНИЯМИ (ПЕРВЫЙ БЛОК) -->
+<div class="flex flex-col sm:flex-row gap-5 max-w-md mx-auto">
+<div class="flex-1">
+<button onclick="showBookingModal()" class="glow-btn w-full px-14 py-7 text-xl font-semibold bg-gradient-to-r from-pink-400 to-purple-500 text-white rounded-3xl flex items-center justify-center">
+            Забронировать место
+</button>
+<p class="text-sm text-white/70 mt-3 text-center">Для тех, кто готов зафиксировать участие сразу</p>
+</div>
+<div class="flex-1">
+<button onclick="showApplicationModal()" class="w-full px-14 py-7 text-xl font-medium border-2 border-white/50 hover:border-white rounded-3xl transition flex items-center justify-center">
+            Оставить заявку
+</button>
+<p class="text-sm text-white/70 mt-3 text-center">Для тех, кто хочет сначала задать вопросы</p>
+</div>
+</div>
+</div>
+</section>
+<section id="about-maria" class="py-10 md:py-20 border-t border-white/10">
+<div class="max-w-5xl mx-auto px-6">
+<div class="grid md:grid-cols-2 gap-16 items-center">
+<div>
+<h2 class="text-4xl md:text-5xl heading-font mb-8 leading-tight text-center md:text-left">Мария Вельс — ваш тренер</h2>
+<div class="text-base md:text-lg leading-relaxed space-y-6 text-white/90">
+<p>Действующая актриса иммерсивного театра с многолетним опытом работы в премиальных проектах.</p>
+<p>Мария помогает девушкам развивать уверенность, сценическое присутствие и профессиональную подачу через индивидуальную практическую работу.</p>
+<p>Программа основана на реальном опыте работы в требовательной театральной среде и личном подходе к каждой участнице.</p>
+</div>
+</div>
+<div class="text-center">
+<img src="maria.jpg" alt="Мария Вельс" class="rounded-3xl shadow-2xl border border-white/10 mx-auto w-full max-w-sm">
+</div>
+</div>
+</div>
+</section>
+<section id="program" class="py-10 md:py-20 bg-white/5">
+<div class="max-w-4xl mx-auto px-6">
+<h2 class="text-5xl heading-font mb-12 text-center md:text-left">О программе</h2>
+<div class="text-base md:text-lg leading-relaxed space-y-6">
+<p>Индивидуальная программа для развития харизмы, уверенной сценической подачи и профессиональной самопрезентации.</p>
+<p>Фокус — на практике: работа над внутренним состоянием, артистизмом, коммуникацией и умением производить сильное впечатление в профессиональной среде.</p>
+<p>Подходит девушкам, которые хотят уверенно чувствовать себя на кастингах и в требовательных иммерсивных проектах.</p>
+</div>
+<button onclick="showBookingModal()" class="mt-12 glow-btn px-12 py-6 pink-gradient text-white font-semibold rounded-3xl flex items-center justify-center mx-auto">
+            Забронировать место
+</button>
+</div>
+</section>
+<section id="for-whom" class="py-10 md:py-20">
+<div class="max-w-4xl mx-auto px-6">
+<h2 class="text-5xl heading-font mb-12 text-center md:text-left">Для кого эта программа</h2>
+<div class="grid md:grid-cols-2 gap-8 text-base md:text-lg">
+<ul class="space-y-6">
+<li>• Для девушек, которые хотят стать увереннее в себе и своей подаче</li>
+<li>• Для тех, кто хочет научиться профессионально презентовать себя</li>
+<li>• Для тех, кто чувствует потенциал, но хочет раскрыть его полностью</li>
+</ul>
+<ul class="space-y-6">
+<li>• Для девушек, которые стремятся развить харизму и сценическое присутствие</li>
+<li>• Для тех, кто готовится к кастингам в премиальные иммерсивные проекты</li>
+</ul>
+</div>
+<p class="mt-12 text-base md:text-lg text-center">Если программа вам близка, но вы хотите сначала обсудить детали — оставьте заявку.</p>
+<button onclick="showApplicationModal()" class="mt-10 px-12 py-6 border border-white/40 hover:border-white rounded-3xl flex items-center justify-center mx-auto">
+            Оставить заявку
+</button>
+</div>
+</section>
+<section class="py-10 md:py-20 bg-white/5">
+<div class="max-w-4xl mx-auto px-6">
+<h2 class="text-5xl heading-font mb-12 text-center md:text-left">Что входит в программу</h2>
+<ul class="grid md:grid-cols-2 gap-y-6 text-base md:text-lg">
+<li>• Индивидуальная работа 7 дней по 2 часа</li>
+<li>• Разбор самопрезентации и сильных сторон</li>
+<li>• Работа над уверенностью и внутренней подачей</li>
+<li>• Развитие харизмы и сценического присутствия</li>
+<li>• Практика профессиональной коммуникации</li>
+<li>• Рекомендации по образу и манере поведения</li>
+<li>• Подготовка к кастингам с высокими требованиями</li>
+<li>• Гарантированный выход на кастинг с пометкой «Ученица Марии Вельс»</li>
+</ul>
+<button onclick="showBookingModal()" class="mt-12 glow-btn px-12 py-6 pink-gradient text-white font-semibold rounded-3xl flex items-center justify-center mx-auto">
+            Забронировать место
+</button>
+</div>
+</section>
+<section class="py-10 md:py-20">
+<div class="max-w-4xl mx-auto px-6">
+<h2 class="text-5xl heading-font mb-12 text-center md:text-left">Как проходит обучение</h2>
+<div class="text-base md:text-lg space-y-5">
+<p>• Формат: полностью индивидуальный</p>
+<p>• Продолжительность: 7 дней</p>
+<p>• Занятость: 2 часа в день</p>
+<p>• Город: Москва</p>
+<p>• Локация: профессиональная студия в центре</p>
+<p>• Количество мест в потоке: всего 10</p>
+</div>
+<p class="mt-8 font-medium text-center">После оплаты место сразу фиксируется за вами</p>
+<button onclick="showBookingModal()" class="mt-10 glow-btn px-12 py-6 pink-gradient text-white font-semibold rounded-3xl flex items-center justify-center mx-auto">
+            Забронировать место
+</button>
+</div>
+</section>
+<section id="results" class="py-10 md:py-20 bg-white/5">
+<div class="max-w-5xl mx-auto px-6">
+<h2 class="text-5xl heading-font mb-12 text-center">Что говорят выпускницы</h2>
+<div class="grid md:grid-cols-3 gap-8">
+<div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 bg-pink-200 rounded-full flex items-center justify-center text-pink-600 font-semibold">А</div>
+<div>
+<div class="font-semibold">Анна Смирнова</div>
+<div class="text-sm text-white/60">Выпускница потока февраль 2026</div>
+</div>
+</div>
+<p class="text-base leading-relaxed text-white/90 italic">
+                    «После программы я впервые почувствовала себя уверенно на кастинге. Получила рекомендацию Марии и уже прошла в новый иммерсивный проект.»
+</p>
+</div>
+<div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 bg-pink-200 rounded-full flex items-center justify-center text-pink-600 font-semibold">Е</div>
+<div>
+<div class="font-semibold">Елизавета Морозова</div>
+<div class="text-sm text-white/60">Выпускница потока апрель 2026</div>
+</div>
+</div>
+<p class="text-base leading-relaxed text-white/90 italic">
+                    «Индивидуальный подход Марии помог мне полностью изменить свою подачу. Теперь я знаю, как держать внимание и выглядеть профессионально.»
+</p>
+</div>
+<div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 bg-pink-200 rounded-full flex items-center justify-center text-pink-600 font-semibold">В</div>
+<div>
+<div class="font-semibold">Виктория Ковалёва</div>
+<div class="text-sm text-white/60">Выпускница потока апрель 2026</div>
+</div>
+</div>
+<p class="text-base leading-relaxed text-white/90 italic">
+                    «Самое ценное — это не только навыки, но и внутреннее состояние. Получила выход на кастинг уже через неделю после окончания.»
+</p>
+</div>
+</div>
+</div>
+</section>
+<section id="faq" class="py-10 md:py-20">
+<div class="max-w-4xl mx-auto px-6">
+<h2 class="text-5xl heading-font mb-16 text-center">Частые вопросы</h2>
+<div class="space-y-3">
+<div class="faq-item bg-white/5 rounded-3xl overflow-hidden" onclick="toggleFAQ(this)">
+<div class="faq-question flex justify-between items-center p-7 text-lg font-medium">
+<span>Где проходит обучение?</span>
+<i class="fas fa-chevron-down faq-icon transition-transform duration-300"></i>
+</div>
+<div class="faq-answer px-7 pb-7 text-white/80">Обучение проходит офлайн в Москве, в профессиональной студии в центре города.</div>
+</div>
+<div class="faq-item bg-white/5 rounded-3xl overflow-hidden" onclick="toggleFAQ(this)">
+<div class="faq-question flex justify-between items-center p-7 text-lg font-medium">
+<span>Сколько длится программа?</span>
+<i class="fas fa-chevron-down faq-icon transition-transform duration-300"></i>
+</div>
+<div class="faq-answer px-7 pb-7 text-white/80">7 дней, по 2 часа в день.</div>
+</div>
+<div class="faq-item bg-white/5 rounded-3xl overflow-hidden" onclick="toggleFAQ(this)">
+<div class="faq-question flex justify-between items-center p-7 text-lg font-medium">
+<span>Можно ли оплатить частями?</span>
+<i class="fas fa-chevron-down faq-icon transition-transform duration-300"></i>
+</div>
+<div class="faq-answer px-7 pb-7 text-white/80">Да, доступна оплата частями.</div>
+</div>
+<div class="faq-item bg-white/5 rounded-3xl overflow-hidden" onclick="toggleFAQ(this)">
+<div class="faq-question flex justify-between items-center p-7 text-lg font-medium">
+<span>Что происходит после оплаты?</span>
+<i class="fas fa-chevron-down faq-icon transition-transform duration-300"></i>
+</div>
+<div class="faq-answer px-7 pb-7 text-white/80">Место фиксируется за вами, мы связываемся для подтверждения и согласования дат.</div>
+</div>
+<div class="faq-item bg-white/5 rounded-3xl overflow-hidden" onclick="toggleFAQ(this)">
+<div class="faq-question flex justify-between items-center p-7 text-lg font-medium">
+<span>Что даёт прохождение обучения?</span>
+<i class="fas fa-chevron-down faq-icon transition-transform duration-300"></i>
+</div>
+<div class="faq-answer px-7 pb-7 text-white/80">Гарантированный выход на кастинг с рекомендационной пометкой «Ученица Марии Вельс».</div>
+</div>
+</div>
+<div class="text-center mt-16">
+<p class="mb-6">Остались вопросы? Оставьте заявку — мы свяжемся с вами в течение дня.</p>
+<button onclick="showApplicationModal()" class="px-12 py-6 border border-white/40 hover:border-white rounded-3xl flex items-center justify-center mx-auto">
+                Оставить заявку
+</button>
+</div>
+</div>
+</section>
+<section class="py-10 md:py-20 text-center bg-white/5">
+<div class="max-w-3xl mx-auto px-6">
+<h2 class="text-5xl heading-font mb-8">Количество мест ограничено</h2>
+<p class="text-xl mb-12">Ближайший поток стартует 11 мая.<br>Если вы готовы к работе над собой — зафиксируйте участие сейчас.</p>
+<div class="flex flex-col sm:flex-row gap-6 justify-center">
+<button onclick="showBookingModal()" class="glow-btn px-14 py-7 pink-gradient text-white font-semibold rounded-3xl flex items-center justify-center">
+                Забронировать место
+</button>
+<button onclick="showApplicationModal()" class="px-14 py-7 text-xl font-medium border border-white/40 hover:border-white rounded-3xl flex items-center justify-center">
+                Оставить заявку
+</button>
+</div>
+</div>
+</section>
+<!-- FOOTER -->
+<footer class="bg-black py-16 border-t border-white/10">
+<div class="max-w-6xl mx-auto px-6 text-center text-sm text-white/70">
+<div class="flex flex-wrap justify-center gap-x-8 gap-y-3 mb-8">
+<a href="politika-pd.rtf" download="Политика обработки персональных данных.rtf" class="hover:text-white cursor-pointer">Политика обработки персональных данных</a>
+<a href="soglasie-pd.rtf" download="Согласие на обработку ПД.rtf" class="hover:text-white cursor-pointer">Согласие на обработку ПД</a>
+<a href="soglasie-info.rtf" download="Согласие на информационные сообщения.rtf" class="hover:text-white cursor-pointer">Согласие на информационные сообщения</a>
+<a href="pravila-uchastiya.rtf" download="Правила участия.rtf" class="hover:text-white cursor-pointer">Правила участия</a>
+<a href="programma-obucheniya.rtf" download="Программа обучения.rtf" class="hover:text-white cursor-pointer">Программа обучения</a>
+<a href="dogovor_maria_vels.rtf" download="Договор об оказании услуг.rtf" class="hover:text-white cursor-pointer">Договор</a>
+<a onclick="showDocModal('refund')" class="hover:text-white cursor-pointer">Условия оплаты и возврата</a>
+</div>
+<p>© 2026 MARIA VELS | CLUB</p>
+</div>
+</footer>
+<!-- POP-UP Бронирование -->
+<div id="bookingModal" class="hidden fixed inset-0 bg-black/95 flex items-center justify-center z-[100]">
+<div class="modal bg-[#1a1a1a] rounded-3xl p-10 max-w-lg w-full mx-4">
+<h3 class="text-3xl heading-font mb-6 text-center">Бронирование участия</h3>
+<p class="text-center text-xl mb-8">Программа MARIA VELS | CLUB</p>
+<div class="bg-black/60 p-6 rounded-2xl mb-8 space-y-3">
+<p>7 дней • по 2 часа</p>
+<p>Офлайн в центре Москвы</p>
+<p class="font-semibold text-2xl">50 000 ₽</p>
+</div>
+<div class="space-y-5 text-sm" id="bookingCheckboxes">
+<label class="flex items-start gap-3 cursor-pointer">
+<input type="checkbox" onchange="checkBookingForm()" class="accent-pink-500 mt-1">
+                Я ознакомлена и принимаю Правила участия, Программу обучения и Условия оплаты и возврата
+</label>
+<label class="flex items-start gap-3 cursor-pointer">
+<input type="checkbox" onchange="checkBookingForm()" class="accent-pink-500 mt-1">
+                Я ознакомлена с Политикой обработки персональных данных и даю согласие
+</label>
+<label class="flex items-start gap-3 cursor-pointer">
+<input type="checkbox" onchange="checkBookingForm()" class="accent-pink-500 mt-1">
+                Я даю согласие на получение информационных сообщений
+</label>
+</div>
+<button id="payButton" onclick="goToPayment()" disabled class="glow-btn w-full mt-8 py-6 pink-gradient text-white font-semibold rounded-3xl flex items-center justify-center disabled:opacity-50">
+            Перейти к оплате
+</button>
+<button onclick="closeBookingModal()" class="mt-4 w-full py-4 text-white/70">Закрыть</button>
+</div>
+</div>
+<!-- POP-UP ЗАЯВКА -->
+<div id="applicationModal" class="hidden fixed inset-0 bg-black/95 flex items-center justify-center z-[100]">
+<div class="modal bg-[#1a1a1a] rounded-3xl p-8 max-w-md w-full mx-4">
+<h3 class="text-3xl heading-font mb-6 text-center">Оставить заявку</h3>
+<p class="text-center mb-8 text-lg">Мы свяжемся с вами для обсуждения деталей и ответим на все вопросы</p>
+<form id="applicationForm" onsubmit="submitApplication(event)" class="space-y-4">
+<input type="text" name="name" placeholder="Имя *" required class="w-full bg-transparent border border-white/30 rounded-2xl px-6 py-3 focus:border-pink-400">
+<input type="tel" name="phone" placeholder="Телефон *" required class="w-full bg-transparent border border-white/30 rounded-2xl px-6 py-3 focus:border-pink-400">
+<input type="email" name="email" placeholder="Email *" required class="w-full bg-transparent border border-white/30 rounded-2xl px-6 py-3 focus:border-pink-400">
+<input type="text" name="telegram" placeholder="Telegram" class="w-full bg-transparent border border-white/30 rounded-2xl px-6 py-3 focus:border-pink-400">
+<textarea name="message" placeholder="Комментарий или вопросы" rows="3" class="w-full bg-transparent border border-white/30 rounded-3xl px-6 py-3 focus:border-pink-400"></textarea>
+<div class="space-y-4 text-sm" id="appCheckboxes">
+<label class="flex items-start gap-3 cursor-pointer">
+<input type="checkbox" onchange="checkApplicationForm()" class="accent-pink-500 mt-1">
+            Я ознакомлена с Политикой обработки персональных данных и даю согласие
+</label>
+<label class="flex items-start gap-3 cursor-pointer">
+<input type="checkbox" onchange="checkApplicationForm()" class="accent-pink-500 mt-1">
+            Я даю согласие на получение информационных сообщений
+</label>
+</div>
+<button id="submitAppBtn" type="submit" disabled class="glow-btn w-full mt-6 py-6 pink-gradient text-white font-semibold rounded-3xl flex items-center justify-center disabled:opacity-50">
+        Отправить заявку
+</button>
+</form>
+<button onclick="closeApplicationModal()" class="mt-6 w-full py-4 text-white/70 text-base">Закрыть</button>
+</div>
+</div>
+<!-- ПОПАП УСПЕШНОГО АВТООТВЕТА -->
+<div id="successModal" class="hidden fixed inset-0 bg-black/95 flex items-center justify-center z-[110]">
+<div class="modal bg-[#1a1a1a] rounded-3xl p-10 max-w-md w-full mx-4 text-center">
+<div class="text-6xl mb-6">✅</div>
+<h3 class="text-3xl heading-font mb-3">Заявка успешно отправлена!</h3>
+<p class="text-lg text-white/80 mb-10">Спасибо! Мы свяжемся с вами в ближайшее время.</p>
+<button onclick="closeSuccessModal()" class="w-full py-4 bg-white text-black font-semibold rounded-3xl hover:bg-white/90 transition">
+        Хорошо
+</button>
+</div>
+</div>
+<!-- МОДАЛЬНОЕ ОКНО ДЛЯ УСЛОВИЙ ОПЛАТЫ И ВОЗВРАТА -->
+<div id="docModal" class="hidden fixed inset-0 bg-black/95 flex items-center justify-center z-[120] p-4">
+<div class="bg-[#1a1a1a] rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-auto">
+<div class="sticky top-0 bg-[#1a1a1a] p-6 border-b border-white/10 flex justify-between items-center">
+<h3 id="modalTitle" class="text-3xl heading-font"></h3>
+<button onclick="closeDocModal()" class="text-4xl text-white/60 hover:text-white">×</button>
+</div>
+<div id="modalContent" class="p-8 text-white/90 leading-relaxed text-[15px]"></div>
+</div>
+</div>
+<script>
+function createRipple(e) {
+const btn = e.currentTarget;
+const oldRipples = btn.querySelectorAll('.ripple');
+oldRipples.forEach(r => r.remove());
+const ripple = document.createElement('span');
+ripple.classList.add('ripple');
+const rect = btn.getBoundingClientRect();
+const size = Math.max(rect.width, rect.height) * 2;
+ripple.style.width = `${size}px`;
+ripple.style.height = `${size}px`;
+ripple.style.left = `${e.clientX - rect.left - size/2}px`;
+ripple.style.top = `${e.clientY - rect.top - size/2}px`;
+btn.appendChild(ripple);
+setTimeout(() => ripple.remove(), 700);
+}
+function addRippleToButtons() {
+document.querySelectorAll('.glow-btn').forEach(btn => {
+btn.addEventListener('click', createRipple);
+});
+}
+function toggleFAQ(el) { el.classList.toggle('active'); }
+function checkBookingForm() {
+const allChecked = Array.from(document.querySelectorAll('#bookingCheckboxes input')).every(cb => cb.checked);
+document.getElementById('payButton').disabled = !allChecked;
+}
+function checkApplicationForm() {
+const allChecked = Array.from(document.querySelectorAll('#appCheckboxes input')).every(cb => cb.checked);
+document.getElementById('submitAppBtn').disabled = !allChecked;
+}
+function showBookingModal() {
+document.getElementById('bookingModal').classList.remove('hidden');
+document.getElementById('bookingModal').classList.add('flex');
+}
+function closeBookingModal() {
+document.getElementById('bookingModal').classList.add('hidden');
+document.getElementById('bookingModal').classList.remove('flex');
+}
+function goToPayment() {
+closeBookingModal();
+alert('Переход на страницу оплаты...');
+}
+function showApplicationModal() {
+document.getElementById('applicationModal').classList.remove('hidden');
+document.getElementById('applicationModal').classList.add('flex');
+}
+function closeApplicationModal() {
+document.getElementById('applicationModal').classList.add('hidden');
+document.getElementById('applicationModal').classList.remove('flex');
+}
+function closeSuccessModal() {
+const modal = document.getElementById('successModal');
+modal.classList.add('hidden');
+modal.classList.remove('flex');
+}
+async function submitApplication(e) {
+e.preventDefault();
+const form = e.target;
+const submitBtn = document.getElementById('submitAppBtn');
+const originalText = submitBtn.textContent;
+submitBtn.disabled = true;
+submitBtn.innerHTML = `<span class="inline-block animate-spin mr-2">⟳</span> Отправляем...`;
+const formData = new FormData(form);
+const name = formData.get('name') || '—';
+const phone = formData.get('phone') || '—';
+const email = formData.get('email') || '—';
+const telegram = formData.get('telegram') || '—';
+const message = formData.get('message') || '—';
+const text = `🔔 Новая заявка с сайта MARIA VELS | CLUB\n\n` +
+`👤 Имя: ${name}\n` +
+`📱 Телефон: ${phone}\n` +
+`✉️ Email: ${email}\n` +
+`📲 Telegram: ${telegram}\n` +
+`💬 Комментарий:\n${message}`;
+try {
+const response = await fetch('https://api.telegram.org/bot8776292297:AAHiptJJf9HlMPT1VDhj6x0saBuV90tCLnU/sendMessage', {
+method: 'POST',
+headers: { 'Content-Type': 'application/json' },
+body: JSON.stringify({
+chat_id: 520740282,
+text: text
+            })
+        });
+if (response.ok) {
+closeApplicationModal();
+document.getElementById('successModal').classList.remove('hidden');
+document.getElementById('successModal').classList.add('flex');
+form.reset();
+        } else {
+throw new Error();
+        }
+    } catch (error) {
+alert('❌ Не удалось отправить заявку. Попробуйте позже.');
+    } finally {
+submitBtn.disabled = false;
+submitBtn.textContent = originalText;
+    }
+}
+function showDocModal(type) {
+const modal = document.getElementById('docModal');
+const titleEl = document.getElementById('modalTitle');
+const contentEl = document.getElementById('modalContent');
+if (type === 'refund') {
+titleEl.textContent = 'Условия оплаты и возврата';
+contentEl.innerHTML = `
+            <p class="text-xl font-semibold mb-6">Стоимость программы — 50 000 ₽</p>
+            <div class="space-y-6">
+                <div>
+                    <p class="font-medium text-pink-400 mb-2">Способы оплаты:</p>
+                    <ul class="list-disc list-inside space-y-2 text-white/90">
+                        <li>100 % предоплата до начала оказания услуг;</li>
+                        <li>в рассрочку через сервис CloudPayments (по условиям, предложенным сервисом на момент оплаты).</li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="font-medium text-pink-400 mb-2">Возврат денежных средств:</p>
+                    <ul class="list-disc list-inside space-y-4 text-white/90">
+                        <li>В случае отказа Заказчика <strong>до даты начала программы</strong> Исполнитель возвращает уплаченную сумму за вычетом фактически понесённых расходов.</li>
+                        <li>В случае отказа <strong>после даты начала программы</strong> Исполнитель возвращает уплаченную сумму за вычетом стоимости фактически оказанных услуг и фактически понесённых расходов.</li>
+                        <li><strong>После проведения всех 7 занятий</strong> денежные средства возврату не подлежат, поскольку услуги считаются оказанными в полном объёме.</li>
+                    </ul>
+                </div>
+            </div>
+            <p class="text-sm text-white/60 mt-10 border-t border-white/10 pt-6">
+                Полный текст условий оплаты и возврата содержится в Договоре № ____ от «___» __________ 2026 г.
+            </p>
+        `;
+    }
+modal.classList.remove('hidden');
+modal.classList.add('flex');
+}
+function closeDocModal() {
+const modal = document.getElementById('docModal');
+modal.classList.add('hidden');
+modal.classList.remove('flex');
+}
+document.addEventListener('DOMContentLoaded', () => {
+addRippleToButtons();
+});
+</script>
+</body>
+</html>
