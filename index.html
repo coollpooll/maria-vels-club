@@ -473,6 +473,7 @@ padding-bottom: 1.25rem;
 <div id="modalContent" class="p-8 text-white/90 leading-relaxed text-[15px]"></div>
 </div>
 </div>
+
 <script>
 function createRipple(e) {
 const btn = e.currentTarget;
@@ -528,49 +529,48 @@ const modal = document.getElementById('successModal');
 modal.classList.add('hidden');
 modal.classList.remove('flex');
 }
+
+/* НОВАЯ ФУНКЦИЯ — ТОКЕН ТЕПЕРЬ СПРЯТАН В NETLIFY */
 async function submitApplication(e) {
-e.preventDefault();
-const form = e.target;
-const submitBtn = document.getElementById('submitAppBtn');
-const originalText = submitBtn.textContent;
-submitBtn.disabled = true;
-submitBtn.innerHTML = `<span class="inline-block animate-spin mr-2">⟳</span> Отправляем...`;
-const formData = new FormData(form);
-const name = formData.get('name') || '—';
-const phone = formData.get('phone') || '—';
-const email = formData.get('email') || '—';
-const telegram = formData.get('telegram') || '—';
-const message = formData.get('message') || '—';
-const text = `🔔 Новая заявка с сайта MARIA VELS | CLUB\n\n` +
-`👤 Имя: ${name}\n` +
-`📱 Телефон: ${phone}\n` +
-`✉️ Email: ${email}\n` +
-`📲 Telegram: ${telegram}\n` +
-`💬 Комментарий:\n${message}`;
-try {
-const response = await fetch('https://api.telegram.org/bot8776292297:AAHiptJJf9HlMPT1VDhj6x0saBuV90tCLnU/sendMessage', {
-method: 'POST',
-headers: { 'Content-Type': 'application/json' },
-body: JSON.stringify({
-chat_id: 520740282,
-text: text
-            })
-        });
-if (response.ok) {
-closeApplicationModal();
-document.getElementById('successModal').classList.remove('hidden');
-document.getElementById('successModal').classList.add('flex');
-form.reset();
-        } else {
-throw new Error();
-        }
-    } catch (error) {
-alert('❌ Не удалось отправить заявку. Попробуйте позже.');
-    } finally {
-submitBtn.disabled = false;
-submitBtn.textContent = originalText;
+  e.preventDefault();
+  const form = e.target;
+  const submitBtn = document.getElementById('submitAppBtn');
+  const originalText = submitBtn.textContent;
+  submitBtn.disabled = true;
+  submitBtn.innerHTML = `<span class="inline-block animate-spin mr-2">⟳</span> Отправляем...`;
+
+  const formData = new FormData(form);
+  const payload = {
+    name: formData.get('name') || '—',
+    phone: formData.get('phone') || '—',
+    email: formData.get('email') || '—',
+    telegram: formData.get('telegram') || '—',
+    message: formData.get('message') || '—'
+  };
+
+  try {
+    const response = await fetch('/.netlify/functions/sendTelegram', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    if (response.ok) {
+      closeApplicationModal();
+      document.getElementById('successModal').classList.remove('hidden');
+      document.getElementById('successModal').classList.add('flex');
+      form.reset();
+    } else {
+      throw new Error();
     }
+  } catch (error) {
+    alert('❌ Не удалось отправить заявку. Попробуйте позже.');
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = originalText;
+  }
 }
+
 function showDocModal(type) {
 const modal = document.getElementById('docModal');
 const titleEl = document.getElementById('modalTitle');
