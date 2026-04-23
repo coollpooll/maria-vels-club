@@ -21,14 +21,17 @@ font-family: 'Playfair Display', serif;
 .pink-gradient {
 background: linear-gradient(90deg, #ff8ec4, #ff4d94);
 }
+
+/* НОВЫЙ ФОН — maria2.jpg */
 .video-bg {
 position: fixed;
 top: 0; left: 0;
 width: 100%; height: 100%;
-object-fit: cover;
+background: url('maria2.jpg') center/cover no-repeat;
 z-index: -2;
 filter: grayscale(85%) brightness(0.62) contrast(1.18);
 }
+
 .gold-glow {
 position: fixed;
 inset: 0;
@@ -129,12 +132,13 @@ padding-bottom: 1.25rem;
 </div>
 </div>
 </header>
-<!-- Фоновое видео -->
-<video class="video-bg" autoplay loop muted playsinline poster="maria.jpg">
-<source src="background-video.mp4" type="video/mp4">
-</video>
+
+<!-- ФОНОВОЕ ИЗОБРАЖЕНИЕ maria2.jpg -->
+<div class="video-bg"></div>
+
 <div class="gold-glow"></div>
 <div class="pink-overlay"></div>
+
 <!-- HERO -->
 <section class="min-h-screen flex items-center pt-20 relative">
 <div class="max-w-4xl mx-auto px-6 text-center">
@@ -189,6 +193,8 @@ padding-bottom: 1.25rem;
 </div>
 </div>
 </section>
+
+<!-- Остальная часть сайта полностью сохранена без изменений -->
 <section id="about-maria" class="py-10 md:py-20 border-t border-white/10">
 <div class="max-w-5xl mx-auto px-6">
 <div class="grid md:grid-cols-2 gap-16 items-center">
@@ -206,6 +212,7 @@ padding-bottom: 1.25rem;
 </div>
 </div>
 </section>
+
 <section id="program" class="py-10 md:py-20 bg-white/5">
 <div class="max-w-4xl mx-auto px-6">
 <h2 class="text-5xl heading-font mb-12 text-center md:text-left">О программе</h2>
@@ -219,6 +226,7 @@ padding-bottom: 1.25rem;
 </button>
 </div>
 </section>
+
 <section id="for-whom" class="py-10 md:py-20">
 <div class="max-w-4xl mx-auto px-6">
 <h2 class="text-5xl heading-font mb-12 text-center md:text-left">Для кого эта программа</h2>
@@ -239,6 +247,7 @@ padding-bottom: 1.25rem;
 </button>
 </div>
 </section>
+
 <section class="py-10 md:py-20 bg-white/5">
 <div class="max-w-4xl mx-auto px-6">
 <h2 class="text-5xl heading-font mb-12 text-center md:text-left">Что входит в программу</h2>
@@ -257,6 +266,7 @@ padding-bottom: 1.25rem;
 </button>
 </div>
 </section>
+
 <section class="py-10 md:py-20">
 <div class="max-w-4xl mx-auto px-6">
 <h2 class="text-5xl heading-font mb-12 text-center md:text-left">Как проходит обучение</h2>
@@ -274,6 +284,7 @@ padding-bottom: 1.25rem;
 </button>
 </div>
 </section>
+
 <section id="results" class="py-10 md:py-20 bg-white/5">
 <div class="max-w-5xl mx-auto px-6">
 <h2 class="text-5xl heading-font mb-12 text-center">Что говорят выпускницы</h2>
@@ -317,6 +328,7 @@ padding-bottom: 1.25rem;
 </div>
 </div>
 </section>
+
 <section id="faq" class="py-10 md:py-20">
 <div class="max-w-4xl mx-auto px-6">
 <h2 class="text-5xl heading-font mb-16 text-center">Частые вопросы</h2>
@@ -365,6 +377,7 @@ padding-bottom: 1.25rem;
 </div>
 </div>
 </section>
+
 <section class="py-10 md:py-20 text-center bg-white/5">
 <div class="max-w-3xl mx-auto px-6">
 <h2 class="text-5xl heading-font mb-8">Количество мест ограничено</h2>
@@ -379,6 +392,7 @@ padding-bottom: 1.25rem;
 </div>
 </div>
 </section>
+
 <!-- FOOTER -->
 <footer class="bg-black py-16 border-t border-white/10">
 <div class="max-w-6xl mx-auto px-6 text-center text-sm text-white/70">
@@ -394,6 +408,7 @@ padding-bottom: 1.25rem;
 <p>© 2026 MARIA VELS | CLUB</p>
 </div>
 </footer>
+
 <!-- POP-UP Бронирование -->
 <div id="bookingModal" class="hidden fixed inset-0 bg-black/95 flex items-center justify-center z-[100]">
 <div class="modal bg-[#1a1a1a] rounded-3xl p-10 max-w-lg w-full mx-4">
@@ -424,6 +439,7 @@ padding-bottom: 1.25rem;
 <button onclick="closeBookingModal()" class="mt-4 w-full py-4 text-white/70">Закрыть</button>
 </div>
 </div>
+
 <!-- POP-UP ЗАЯВКА -->
 <div id="applicationModal" class="hidden fixed inset-0 bg-black/95 flex items-center justify-center z-[100]">
 <div class="modal bg-[#1a1a1a] rounded-3xl p-8 max-w-md w-full mx-4">
@@ -452,6 +468,7 @@ padding-bottom: 1.25rem;
 <button onclick="closeApplicationModal()" class="mt-6 w-full py-4 text-white/70 text-base">Закрыть</button>
 </div>
 </div>
+
 <!-- ПОПАП УСПЕШНОГО АВТООТВЕТА -->
 <div id="successModal" class="hidden fixed inset-0 bg-black/95 flex items-center justify-center z-[110]">
 <div class="modal bg-[#1a1a1a] rounded-3xl p-10 max-w-md w-full mx-4 text-center">
@@ -463,6 +480,7 @@ padding-bottom: 1.25rem;
 </button>
 </div>
 </div>
+
 <!-- МОДАЛЬНОЕ ОКНО ДЛЯ УСЛОВИЙ ОПЛАТЫ И ВОЗВРАТА -->
 <div id="docModal" class="hidden fixed inset-0 bg-black/95 flex items-center justify-center z-[120] p-4">
 <div class="bg-[#1a1a1a] rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-auto">
@@ -529,48 +547,42 @@ const modal = document.getElementById('successModal');
 modal.classList.add('hidden');
 modal.classList.remove('flex');
 }
-
-/* НОВАЯ ФУНКЦИЯ — ТОКЕН ТЕПЕРЬ СПРЯТАН В NETLIFY */
 async function submitApplication(e) {
-  e.preventDefault();
-  const form = e.target;
-  const submitBtn = document.getElementById('submitAppBtn');
-  const originalText = submitBtn.textContent;
-  submitBtn.disabled = true;
-  submitBtn.innerHTML = `<span class="inline-block animate-spin mr-2">⟳</span> Отправляем...`;
-
-  const formData = new FormData(form);
-  const payload = {
-    name: formData.get('name') || '—',
-    phone: formData.get('phone') || '—',
-    email: formData.get('email') || '—',
-    telegram: formData.get('telegram') || '—',
-    message: formData.get('message') || '—'
+e.preventDefault();
+const form = e.target;
+const submitBtn = document.getElementById('submitAppBtn');
+const originalText = submitBtn.textContent;
+submitBtn.disabled = true;
+submitBtn.innerHTML = `<span class="inline-block animate-spin mr-2">⟳</span> Отправляем...`;
+const formData = new FormData(form);
+const payload = {
+name: formData.get('name') || '—',
+phone: formData.get('phone') || '—',
+email: formData.get('email') || '—',
+telegram: formData.get('telegram') || '—',
+message: formData.get('message') || '—'
   };
-
-  try {
-    const response = await fetch('/.netlify/functions/sendTelegram', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
+try {
+const response = await fetch('/.netlify/functions/sendTelegram', {
+method: 'POST',
+headers: { 'Content-Type': 'application/json' },
+body: JSON.stringify(payload)
     });
-
-    if (response.ok) {
-      closeApplicationModal();
-      document.getElementById('successModal').classList.remove('hidden');
-      document.getElementById('successModal').classList.add('flex');
-      form.reset();
+if (response.ok) {
+closeApplicationModal();
+document.getElementById('successModal').classList.remove('hidden');
+document.getElementById('successModal').classList.add('flex');
+form.reset();
     } else {
-      throw new Error();
+throw new Error();
     }
   } catch (error) {
-    alert('❌ Не удалось отправить заявку. Попробуйте позже.');
+alert('❌ Не удалось отправить заявку. Попробуйте позже.');
   } finally {
-    submitBtn.disabled = false;
-    submitBtn.textContent = originalText;
+submitBtn.disabled = false;
+submitBtn.textContent = originalText;
   }
 }
-
 function showDocModal(type) {
 const modal = document.getElementById('docModal');
 const titleEl = document.getElementById('modalTitle');
